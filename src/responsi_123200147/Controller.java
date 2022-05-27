@@ -27,7 +27,40 @@ public class Controller {
         
         if (modelMovie.getDataMany()!= 0) {
             String movieData[][] = modelMovie.readMovie();
+            moview.table.setModel((new JTable(movieData,moview.columnName)).getModel());
+            
         }
+        else{
+            JOptionPane.showMessageDialog(null, "Data none");
+        }
+        
+        moview.btnAdd.addActionListener(new ActionListener(){
+            @Override
+             public void actionPerformed(ActionEvent ae){
+                 String Title = moview.getJudul();
+                 double Plot = Double.parseDouble(moview.getAlur());
+                 double Character = Double.parseDouble(moview.getPenokohan());
+                 double Acting = Double.parseDouble(moview.getAkting());
+                 double Score = (Plot+Character+Acting)/3;
+                 modelMovie.insertMovie(Title, Plot, Character, Acting, Score);
+                 
+                 String movieData[][] = modelMovie.readMovie();
+                 moview.table.setModel((new JTable(movieData,moview.columnName)).getModel());
+                 
+             }   
+            
+        });
+        
+        moview.btnReset.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                
+                moview.tfTitle.setText("");
+                moview.tfPlot.setText("");
+                moview.tfCharacter.setText("");
+                moview.tfActing.setText("");
+            }
+        });
         
         
     }
