@@ -57,10 +57,11 @@ public class Controller {
                 
                 moview.tfTitle.setText("");
                 moview.tfPlot.setText("");
-                moview.tfCharacter.setText("");
+                moview.tfChararter.setText("");
                 moview.tfActing.setText("");
             }
         });
+        
         
         
     }
